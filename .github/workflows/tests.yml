@@ -84,9 +84,8 @@ jobs:
     # GitHub from turning off tests after 60 days
     - uses: gautamkrishnar/keepalive-workflow@v1
       if: matrix.ddev_version == 'stable'
-    
-    - name: Trigger release
-      uses: ./.github/workflows/release.yml
-      if: matrix.ddev_version == 'stable'
+  release:
+    needs: tests
+    uses: ./.github/workflows/release.yml
 
 
