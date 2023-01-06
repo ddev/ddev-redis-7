@@ -87,5 +87,6 @@ jobs:
     
     - name: Trigger release
       uses: ./.github/workflows/release.yml
+      if: matrix.ddev_version == 'stable'
 
 
