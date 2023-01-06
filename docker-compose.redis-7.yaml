@@ -1,8 +1,8 @@
 #ddev-generated
 version: '3.6'
 services:
-  redis-7:
-    container_name: ddev-${DDEV_SITENAME}-redis-7
+  redis:
+    container_name: ddev-${DDEV_SITENAME}-redis
     image: redis:7
     # These labels ensure this service is discoverable by ddev.
     labels:

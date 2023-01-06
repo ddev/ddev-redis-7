@@ -1,10 +1,10 @@
-name: redis-7
+name: redis
 
 
 pre_install_actions:
   
 project_files:
-- docker-compose.redis-7.yaml
+- docker-compose.redis.yaml
 - redis/data
 - redis/conf/redis.conf
 - redis/conf/advanced.conf
