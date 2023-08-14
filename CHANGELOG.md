@@ -1,3 +1,19 @@
+# [2.1.0](https://github.com/oblakstudio/ddev-redis-7/compare/v2.0.0...v2.1.0) (2023-08-14)
+
+
+### Bug Fixes
+
+* Added proper chmod on shell scripts ([e9b10da](https://github.com/oblakstudio/ddev-redis-7/commit/e9b10dadaf8ff7fa6d0fd44c485e076ef4889ec2))
+* Fixed base image ([565a446](https://github.com/oblakstudio/ddev-redis-7/commit/565a4464ea11517e850e565ef11146450f32f1c8))
+* Fixed bleeding edge test ([75ad51c](https://github.com/oblakstudio/ddev-redis-7/commit/75ad51c3715e46efab1a2f9bf82a2711f73930e3))
+* Fixed docker entrypoint ([4ec84b0](https://github.com/oblakstudio/ddev-redis-7/commit/4ec84b08e18e3448e2b0a61d278e8b9c4848f957))
+* Fixed dockerfile ([7a284c2](https://github.com/oblakstudio/ddev-redis-7/commit/7a284c25454da569d3354aef9a2ff6874d0fe203))
+
+
+### Features
+
+* Additional work and tweaks ([2dad26b](https://github.com/oblakstudio/ddev-redis-7/commit/2dad26b083bc75c3a96c399f6c605d49021abc6b))
+
 # [2.0.0](https://github.com/oblakstudio/ddev-redis-7/compare/v1.0.0...v2.0.0) (2023-08-14)
 
 
