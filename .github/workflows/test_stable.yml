@@ -3,7 +3,7 @@ on:
   push:
     branches: [master]
     paths-ignore:
-      - ".github/**/*"
+      - README.md
 
   schedule:
     - cron: "25 08 * * *"
