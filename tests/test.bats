@@ -26,12 +26,25 @@ health_checks() {
   assert_success
   run bash -c "ddev start -y"
   assert_success
-  # Make sure we can hit the 8090 port successfully
-  # curl -s -I -f  https://${PROJNAME}.ddev.site:8090 >/tmp/curlout.txt
+
   # # Make sure `ddev redis` works
-  # run bash -c "DDEV_DEBUG=true ddev redis"
-  # assert_success
-  # assert_output "FULLURL https://${PROJNAME}.ddev.site:8090"
+  run bash -c "DDEV_DEBUG=true ddev redis --version"
+  assert_success
+  assert_output "redis-cli 7.0.12"
+
+  # # Keys should be an empty array
+  run bash -c 'ddev redis "KEYS \*"'
+  assert_success
+  assert_output ""
+
+  # # Set a key
+  run bash -c "ddev redis DEBUG POPULATE 10000 TestKey"
+  assert_success
+
+  # # Get the number of keys
+  run bash -c "ddev redis DBSIZE"
+  assert_success
+  assert_output "10000"
 }
 
 teardown() {
@@ -39,6 +52,7 @@ teardown() {
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1
   [ "${TESTDIR}" != "" ] && rm -rf ${TESTDIR}
+  ddev poweroff
 }
 
 @test "install from directory" {
@@ -52,6 +66,6 @@ teardown() {
   set -eu -o pipefail
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
   echo "# ddev get oblakstudio/ddev-redis with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
-  health_checks "oblakstudio/ddev-redis"
+  health_checks "oblakstudio/ddev-redis-7"
 }
 

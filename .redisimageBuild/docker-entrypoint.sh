@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 #ddev-generated - Do not modify this file; your modifications will be overwritten.
 set -e
 
@@ -8,12 +8,6 @@ mkdir -p /data/append
 # or first arg is `something.conf`
 if [ "${1#-}" != "$1" ] || [ "${1%.conf}" != "$1" ]; then
 	set -- redis-server "$@"
-fi
-
-# allow the container to be started with `--user`
-if [ "$1" = 'redis-server' ] && [ "$(id -u)" = '0' ]; then
-	find . \! -user redis -exec chown redis '{}' +
-	exec gosu redis "$0" "$@"
 fi
 
 # set an appropriate umask (if one isn't set already)

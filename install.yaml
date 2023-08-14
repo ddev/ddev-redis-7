@@ -6,6 +6,7 @@ project_files:
   - .redisimageBuild/docker-entrypoint.sh
   - .redisimageBuild/Dockerfile
   - commands/redis/redis
+  - commands/redis/redis-flush
   - redis/conf/redis.conf
   - redis/conf/advanced.conf
   - redis/conf/append.conf
