@@ -1,0 +1,21 @@
+name: E2E Test
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches: [master]
+    paths-ignore:
+      - ".github/**/*"
+
+jobs:
+  test_stable:
+    name: Test DDEV stable
+    timeout-minutes: 5
+    defaults:
+      run:
+        shell: bash
+    runs-on: ddev-test-runner
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run BATS
+        run: bats tests -f "install from directory"
