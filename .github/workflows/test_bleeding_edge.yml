@@ -1,4 +1,4 @@
-name: Bleeding edge tests
+name: Test Bleeding Edge DDEV
 on:
   schedule:
     - cron: "25 08 * * *"
