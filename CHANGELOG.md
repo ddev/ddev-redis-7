@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/oblakstudio/ddev-redis-7/compare/v1.0.0...v2.0.0) (2023-08-14)
+
+
+### Features
+
+* Reimplemented entire plugin ([2031086](https://github.com/oblakstudio/ddev-redis-7/commit/2031086ba0cb2de5ac5d1613c9b13f6e4838dd7c))
+
+
+### BREAKING CHANGES
+
+* Does not use local data folder
+
 # 1.0.0 (2023-01-06)
 
 
