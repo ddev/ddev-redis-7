@@ -4,7 +4,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-redis
     build:
       args:
-        BASE_IMAGE: redis:7.0.12-alpine3.18
+        BASE_IMAGE: redis:7.0.12-alpine
       context: ".redisimageBuild"
       dockerfile: Dockerfile
       no_cache: true
