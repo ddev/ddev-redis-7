@@ -23,7 +23,7 @@ There are a lot of differences between [official](https://github.com/ddev/ddev-r
 | Persistence       | No               | **Yes**                  |
 | Redis Version     | 6.2.5            | 7.0.12                   |
 | Image Size        | 39.9Mb           | 10.34Mb                  |
-| ARM Support       | v5               | v6                       |
+| ARM Support       | v7               | v8                       |
 | Anonymous Volumes | On every restart | **NO**                   |
 | Optimized config  | No               | **Yes**                  |
 

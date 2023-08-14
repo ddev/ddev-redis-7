@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 #ddev-generated - Do not modify this file; your modifications will be overwritten.
 set -e
 
