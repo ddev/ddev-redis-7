@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/oblakstudio/ddev-redis-7/compare/v2.1.0...v2.2.0) (2023-08-15)
+
+
+### Features
+
+* Slimmed down the image, and enabled layer caching ([1851c2f](https://github.com/oblakstudio/ddev-redis-7/commit/1851c2f1d302713a71d4daf284ee57a71c30f1ad))
+
 # [2.1.0](https://github.com/oblakstudio/ddev-redis-7/compare/v2.0.0...v2.1.0) (2023-08-14)
 
 
