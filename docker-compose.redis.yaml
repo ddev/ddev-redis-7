@@ -7,7 +7,6 @@ services:
         BASE_IMAGE: redis:7.0.12-alpine
       context: ".redisimageBuild"
       dockerfile: Dockerfile
-      no_cache: true
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
@@ -18,10 +17,10 @@ services:
         volume:
           nocopy: true
       - ".:/mnt/ddev_config"
-      - "./redis/conf:/usr/local/etc/redis/conf"
+      - "./redis/conf:/etc/redis/conf"
     command:
       - redis-server
-      - /usr/local/etc/redis/conf/redis.conf
+      - /etc/redis/conf/redis.conf
 
 volumes:
   redis:
