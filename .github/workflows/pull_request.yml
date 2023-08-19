@@ -1,7 +1,7 @@
-name: "PR code check"
+name: "Test DDEV Addon"
 on:
-  schedule:
-    - cron: "25 08 * * *"
+  pull_request:
+  merge_group:
 
 jobs:
   run_tests:
