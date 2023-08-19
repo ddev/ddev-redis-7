@@ -3,8 +3,7 @@
 # ddev-redis-7 - Redis 7 container for DDEV
 
 [![GitHub release (with filter)](https://img.shields.io/github/v/release/oblakstudio/ddev-redis-7)](https://github.com/oblakstudio/ddev-redis-7/releases)
-[![Bleeding edge tests](https://github.com/oblakstudio/ddev-redis-7/actions/workflows/test_bleeding_edge.yml/badge.svg?event=schedule)](https://github.com/oblakstudio/ddev-redis-7/actions/workflows/test_bleeding_edge.yml)
-[![Test Stable DDEV](https://github.com/oblakstudio/ddev-redis-7/actions/workflows/test_stable.yml/badge.svg)](https://github.com/oblakstudio/ddev-redis-7/actions/workflows/test_stable.yml)
+[![Tests](https://github.com/oblakstudio/ddev-redis-7/actions/workflows/cron_tests.yml/badge.svg)](https://github.com/oblakstudio/ddev-redis-7/actions/workflows/cron_tests.yml)
 ![project is maintained](https://img.shields.io/maintenance/yes/2024.svg)
 
 </div>

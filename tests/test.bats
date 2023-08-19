@@ -4,44 +4,62 @@ load "${TEST_BREW_PREFIX}/lib/bats-assert/load.bash"
 
 setup() {
   set -eu -o pipefail
-  export DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )/.."
-  export TESTDIR=~/tmp/test-redis
-  mkdir -p $TESTDIR
-  export PROJNAME=test-redis
+
+  export ADDON_DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )/.."
+  export PROJECT=testproj
+  export TEST_DIR="$HOME/tmp/$PROJECT"
   export DDEV_NON_INTERACTIVE=true
-  ddev delete -Oy ${PROJNAME} >/dev/null 2>&1 || true
-  cd "${TESTDIR}"
-  # Create a project with a web container only
-  ddev config --project-name=${PROJNAME} --omit-containers=db
-  # Disable upload dirs warning
-  ddev config --disable-upload-dirs-warning
-  ddev start >/dev/null
-  ddev stop > /dev/null
+
+  mkdir -p $TEST_DIR && cd "$TEST_DIR" || ( printf "unable to cd to $TEST_DIR\n" && exit 1 )
+
+  ddev delete -Oy $PROJECT >/dev/null 2>&1 || true
+  ddev config --project-name=$PROJECT --omit-containers=db --disable-upload-dirs-warning
 }
 
 health_checks() {
   set +u # bats-assert has unset variables so turn off unset check
-  # ddev restart is required because we have done `ddev get` on a new service
+
+  # get the addon
   run bash -c "ddev get $1"
   assert_success
+
+  # start the project
   run bash -c "ddev start -y"
   assert_success
 
-  # # Make sure `ddev redis` works
+  # check that redis is running
   run bash -c "DDEV_DEBUG=true ddev redis --version"
   assert_success
   assert_output "redis-cli 7.0.12"
 
-  # # Keys should be an empty array
+  # key count should be 0
   run bash -c 'ddev redis "KEYS \*"'
   assert_success
   assert_output ""
 
-  # # Set a key
-  run bash -c "ddev redis DEBUG POPULATE 10000 TestKey"
+  # populate 10000 keys
+  echo '' > keys.txt
+  for i in {1..10000}; do echo "SET testkey-$i $i" >> keys.txt; done
+  run bash -c "cat keys.txt | ddev redis --pipe"
+  assert_success
+  assert_line --index 2 "errors: 0, replies: 10000"
+
+  # Trigger a BGSAVE
+  run ddev redis BGSAVE
+  assert_success
+  assert_output "Background saving started"
+
+  sleep 10
+
+  # Stop the project
+  run bash -c "ddev stop"
   assert_success
 
-  # # Get the number of keys
+  # start the project (again)
+  run bash -c "ddev start -y"
+  assert_success
+
+  # Check the key count
   run bash -c "ddev redis DBSIZE"
   assert_success
   assert_output "10000"
@@ -49,23 +67,24 @@ health_checks() {
 
 teardown() {
   set -eu -o pipefail
-  cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
-  ddev delete -Oy ${PROJNAME} >/dev/null 2>&1
-  [ "${TESTDIR}" != "" ] && rm -rf ${TESTDIR}
-  ddev poweroff
+  cd "$TEST_DIR" || ( printf "unable to cd to $TEST_DIR\n" && exit 1 )
+  ddev stop
+  ddev delete -Oy "$PROJECT" >/dev/null 2>&1
+  [ "$TEST_DIR" != "" ] && rm -rf "$TEST_DIR"
 }
-
+# bats test_tags=local
 @test "install from directory" {
   set -eu -o pipefail
-  cd ${TESTDIR}
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
-  health_checks ${DIR}
+  cd "$TEST_DIR"
+  echo "# ddev get oblakstudio/ddev-redis with project "$PROJECT" in "$TEST_DIR"" >&3
+  health_checks "$ADDON_DIR"
 }
 
+# bats test_tags=release
 @test "install from release" {
   set -eu -o pipefail
-  cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
-  echo "# ddev get oblakstudio/ddev-redis with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  cd "$TEST_DIR" || ( printf "unable to cd to "$TEST_DIR"\n" && exit 1 )
+  echo "# ddev get oblakstudio/ddev-redis with project "$PROJECT" in "$TEST_DIR"" >&3
   health_checks "oblakstudio/ddev-redis-7"
 }
 
