@@ -1,3 +1,12 @@
+# [2.3.0](https://github.com/oblakstudio/ddev-redis-7/compare/v2.2.0...v2.3.0) (2023-08-19)
+
+
+### Features
+
+* Added slowlog ([535eb2d](https://github.com/oblakstudio/ddev-redis-7/commit/535eb2d196c1180b8e090b2cdcb1a00677d7c6ec))
+* Implemented proper tests ([d974a3d](https://github.com/oblakstudio/ddev-redis-7/commit/d974a3da2d5a62bfcff8d453b334e0e0fd115851))
+* Standardized tests ([3a46d81](https://github.com/oblakstudio/ddev-redis-7/commit/3a46d81790fe3e32547e5028322e2a7f82b9c8e9))
+
 # [2.2.0](https://github.com/oblakstudio/ddev-redis-7/compare/v2.1.0...v2.2.0) (2023-08-15)
 
 
