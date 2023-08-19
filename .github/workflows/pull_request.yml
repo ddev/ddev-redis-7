@@ -6,6 +6,6 @@ on:
 jobs:
   run_tests:
     name: Run tests
-    uses: oblakstudio/workflows/.github/workflows/reusable_test_ddev_addon.yml@v1
+    uses: oblakstudio/ddev-redis-7/.github/workflows/reusable_test_ddev_addon.yml@master
     with:
       test_type: "local"
