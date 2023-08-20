@@ -76,7 +76,7 @@ jobs:
         with:
           limit-access-to-actor: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
-        if: github.event.inputs.debug_enabled == 'true'
+        if: inputs.debug_enabled == 'true'
 
       - name: Run BATS
-        run: bats tests --filter-tags ${{ github.event.inputs.test_type }}
+        run: bats tests --filter-tags ${{ inputs.test_type }}
