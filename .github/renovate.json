@@ -1,6 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "local>oblakstudio/renovate-config"
+  "extends": ["config:base", ":semanticCommits"],
+  "packageRules": [
+    {
+      "matchManagers": ["docker-compose", "dockerfile"],
+      "semanticCommitType": "feat",
+      "semanticCommitScope": "docker",
+      "labels": ["docker"],
+      "automerge": true
+    }
   ]
 }
