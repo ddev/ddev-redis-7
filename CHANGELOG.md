@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/oblakstudio/ddev-redis-7/compare/v2.3.0...v2.3.1) (2023-08-20)
+
+
+### Bug Fixes
+
+* Removed default renovate config ([6f614d8](https://github.com/oblakstudio/ddev-redis-7/commit/6f614d80a9273f4508fa3631fc5f3b0e0ef16cf4))
+
 # [2.3.0](https://github.com/oblakstudio/ddev-redis-7/compare/v2.2.0...v2.3.0) (2023-08-19)
 
 
