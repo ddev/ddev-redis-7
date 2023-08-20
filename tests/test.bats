@@ -39,7 +39,7 @@ health_checks() {
 
   # populate 10000 keys
   echo '' > keys.txt
-  for i in {1..10000}; do echo "SET testkey-$i $i" >> keys.txt; done
+  run bash -c 'for i in {1..10000}; do echo "SET testkey-$i $i" >> keys.txt; done'
   run bash -c "cat keys.txt | ddev redis --pipe"
   assert_success
   assert_line --index 2 "errors: 0, replies: 10000"

@@ -17,7 +17,7 @@ services:
         volume:
           nocopy: true
       - ".:/mnt/ddev_config"
-      - "./redis/conf:/etc/redis/conf"
+      - "./redis:/etc/redis/conf"
     command:
       - redis-server
       - /etc/redis/conf/redis.conf
