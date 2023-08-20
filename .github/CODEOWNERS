@@ -1,1 +1,6 @@
+* @seebeen
+CHANGELOG.md @seebeen @oblakbot
 .github/workflows/**/* @seebeen
+.redisimageBuild/Dockerfile @seebeen apps/renovate-approve
+package.json @seebeen apps/renovate-approve
+yarn.lock @seebeen apps/renovate-approve
