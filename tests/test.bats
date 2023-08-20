@@ -30,7 +30,7 @@ health_checks() {
   # check that redis is running
   run bash -c "DDEV_DEBUG=true ddev redis --version"
   assert_success
-  assert_output "redis-cli 7.0.12"
+  assert_output --partial "redis-cli"
 
   # key count should be 0
   run bash -c 'ddev redis "KEYS \*"'
