@@ -1,3 +1,15 @@
+# [2.4.0](https://github.com/oblakstudio/ddev-redis-7/compare/v2.3.1...v2.4.0) (2023-08-20)
+
+
+### Bug Fixes
+
+* Tweaked file paths ([a0323db](https://github.com/oblakstudio/ddev-redis-7/commit/a0323dbeefb02650fac342513484ba1e7f1ddb41))
+
+
+### Features
+
+* **docker:** update redis docker tag to v7.2.0 ([4235b96](https://github.com/oblakstudio/ddev-redis-7/commit/4235b9691f1bd3b7af96051b2dc7c76671eb39e3))
+
 ## [2.3.1](https://github.com/oblakstudio/ddev-redis-7/compare/v2.3.0...v2.3.1) (2023-08-20)
 
 
