@@ -1,16 +1,29 @@
 #ddev-generated
-version: '3.6'
 services:
   redis:
     container_name: ddev-${DDEV_SITENAME}-redis
-    image: redis:7
-    user: "1000:1000"
-    # These labels ensure this service is discoverable by ddev.
+    build:
+      args:
+        BASE_IMAGE: redis:7.0.12-alpine
+      context: ".redisimageBuild"
+      dockerfile: Dockerfile
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     volumes:
-    - ".:/mnt/ddev_config"
-    - "./redis/data:/usr/local/etc/redis/data"
-    - "./redis/conf:/usr/local/etc/redis/conf"
-    command: ["redis-server", "/usr/local/etc/redis/conf/redis.conf"]
+      - type: "volume"
+        source: redis
+        target: "/data"
+        volume:
+          nocopy: true
+      - ".:/mnt/ddev_config"
+      - "./redis/conf:/etc/redis/conf"
+    command:
+      - redis-server
+      - /etc/redis/conf/redis.conf
+
+volumes:
+  redis:
+    name: ddev-${DDEV_SITENAME}-redis
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
