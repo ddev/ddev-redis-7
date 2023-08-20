@@ -28,9 +28,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: npm
-      - name: Install NPM dependencies
-        run: npm install
+          cache: yarn
+      - name: Install Yarn dependencies
+        run: yarn install
       - name: Release
         env:
           GIT_AUTHOR_NAME: "oblakbot"
@@ -38,4 +38,4 @@ jobs:
           GIT_COMMITTER_NAME: "oblakbot"
           GIT_COMMITTER_EMAIL: "sibin.grasic+bot@oblak.studio"
           GITHUB_TOKEN: ${{ secrets.OBLAK_BOT_TOKEN }}
-        run: npm run semantic-release
+        run: yarn semantic-release
