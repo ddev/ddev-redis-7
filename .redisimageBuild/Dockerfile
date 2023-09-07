@@ -2,7 +2,7 @@
 #ddev-generated - Do not modify this file; your modifications will be overwritten.
 
 ### DDEV-injected base Dockerfile contents
-FROM redis:7.2.0-alpine as base
+FROM redis:7.2.1-alpine as base
 
 # Copy our custom entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
