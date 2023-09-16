@@ -50,14 +50,13 @@ $ ddev restart
 
 ## Configuration
 
-### Redis Configuration
-
 ### Redis Version
 You can change the redis version by defining an environment variable using an `.env` file in the .ddev folder, or by exporting it in your shell.
 
 ```bash
 export DDEV_REDIS_VERSION="7.2"
 ```
+### Redis Server
 
 Redis configuration files are split in the `.ddev/redis/conf` folder, you can modify them as you wish.  
 Otherwise, plugin just works out of the box.
