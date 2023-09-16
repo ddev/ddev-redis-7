@@ -1,10 +1,6 @@
 name: redis
 
-pre_install_actions:
-
 project_files:
-  - .redisimageBuild/docker-entrypoint.sh
-  - .redisimageBuild/Dockerfile
   - commands/redis/redis
   - commands/redis/redis-flush
   - redis/redis.conf
@@ -17,8 +13,6 @@ project_files:
   - redis/security.conf
   - redis/snapshots.conf
   - docker-compose.redis.yaml
-
-global_files:
 
 post_install_actions:
   - |

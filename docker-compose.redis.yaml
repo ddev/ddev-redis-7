@@ -1,29 +1,19 @@
 #ddev-generated
-services:
-  redis:
-    container_name: ddev-${DDEV_SITENAME}-redis
-    build:
-      args:
-        BASE_IMAGE: redis:7.0.12-alpine
-      context: ".redisimageBuild"
-      dockerfile: Dockerfile
-    labels:
-      com.ddev.site-name: ${DDEV_SITENAME}
-      com.ddev.approot: $DDEV_APPROOT
-    volumes:
-      - type: "volume"
-        source: redis
-        target: "/data"
-        volume:
-          nocopy: true
-      - ".:/mnt/ddev_config"
-      - "./redis:/etc/redis/conf"
-    command:
-      - redis-server
-      - /etc/redis/conf/redis.conf
-
 volumes:
   redis:
     name: ddev-${DDEV_SITENAME}-redis
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
+
+services:
+  redis:
+    container_name: ddev-${DDEV_SITENAME}-redis
+    image: redis:${DDEV_REDIS_VERSION:-7}-alpine
+    command: /etc/redis/conf/redis.conf
+    volumes:
+      - ".:/mnt/ddev_config"
+      - "./redis:/etc/redis/conf"
+      - "redis:/data"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT

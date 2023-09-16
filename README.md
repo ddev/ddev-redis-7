@@ -20,9 +20,8 @@ There are a lot of differences between [official](https://github.com/ddev/ddev-r
 | ----------------- | ---------------- | ------------------------ |
 | Maximum Memory    | Unlimited        | 512Mb                    |
 | Persistence       | No               | **Yes**                  |
-| Redis Version     | 6.2.5            | 7.0.12                   |
-| Image Size        | 112.9Mb          | 23.51Mb                  |
-| ARM Support       | v7               | v8                       |
+| Redis Version     | 6.2.5            | 7.x                      |
+| Image Size        | 112.9Mb          | 14.38Mb                  |
 | Anonymous Volumes | On every restart | **NO**                   |
 | Optimized config  | No               | **Yes**                  |
 
@@ -43,15 +42,25 @@ $ ddev get oblakstudio/ddev-redis-7
 $ ddev restart
 ```
 
->**Note:** Authentication is setup by default, and the password is `redis`. For latest AUTH support, username is also set to `redis`.
+> [!IMPORTANT]  
+> Authentication is setup by default, and the password is `redis`.
+> You can use the password with or without a username. Username is `redis` as well.
 
 
 ## Configuration
 
+### Redis Configuration
+
+### Redis Version
+You can change the redis version by defining an environment variable using an `.env` file in the .ddev folder, or by exporting it in your shell.
+
+```bash
+export DDEV_REDIS_VERSION="7.2"
+```
+
 Redis configuration files are split in the `.ddev/redis/conf` folder, you can modify them as you wish.  
 Otherwise, plugin just works out of the box.
 
-## Commands
 
 ## Commands
 
