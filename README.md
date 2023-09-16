@@ -43,8 +43,9 @@ $ ddev restart
 ```
 
 > [!IMPORTANT]  
-> Authentication is setup by default, and the password is `redis`.
-> You can use the password with or without a username. Username is `redis` as well.
+> Authentication is setup by default, and the password is `redis`.  
+> If needed, you can auth with a username and password.  
+> Username is `redis` as well.
 
 
 ## Configuration
