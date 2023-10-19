@@ -18,4 +18,6 @@ post_install_actions:
   - |
     #ddev-description: Change the redis dump filename
     #
-    sed -i -e "s/REPLACE_ME/${DDEV_SITENAME}/g" redis/snapshots.conf
+    # sed -i -e "s/REPLACE_ME/${DDEV_SITENAME}/g" redis/snapshots.conf
+    # blind test
+    docker run -i --rm ddev/ddev-utilities sed -i -e "s/REPLACE_ME/${DDEV_SITENAME}/g" redis/snapshots.conf
