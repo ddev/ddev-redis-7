@@ -84,7 +84,7 @@ teardown() {
 @test "install from release" {
   set -eu -o pipefail
   cd "$TEST_DIR" || ( printf "unable to cd to "$TEST_DIR"\n" && exit 1 )
-  echo "# ddev get oblakstudio/ddev-redis with project "$PROJECT" in "$TEST_DIR"" >&3
-  health_checks "oblakstudio/ddev-redis-7"
+  echo "# ddev get ddev/ddev-redis with project "$PROJECT" in "$TEST_DIR"" >&3
+  health_checks "ddev/ddev-redis-7"
 }
 
