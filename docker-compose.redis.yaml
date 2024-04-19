@@ -13,6 +13,7 @@ services:
     command: /etc/redis/conf/redis.conf
     volumes:
       - ".:/mnt/ddev_config"
+      - "ddev-global-cache:/mnt/ddev-global-cache"
       - "./redis:/etc/redis/conf"
       - "redis:/data"
     expose:
