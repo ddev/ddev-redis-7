@@ -13,6 +13,7 @@ services:
     command: /etc/redis/conf/redis.conf
     volumes:
       - ".:/mnt/ddev_config"
+      - "ddev-global-cache:/mnt/ddev-global-cache"
       - "./redis:/etc/redis/conf"
       - "redis:/data"
     expose:
@@ -22,10 +23,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "2"
+          cpus: "2.5"
           memory: "768M"
         reservations:
-          cpus: "1"
+          cpus: "1.5"
           memory: "512M"
     restart: "no"
     labels:

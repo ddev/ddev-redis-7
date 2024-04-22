@@ -10,19 +10,19 @@
 
 This repository provides [Redis 7](https://redis.com) container for [DDEV](https://ddev.readthedocs.io/).
 
-It is based on [redis:7-alpine](https://hub.docker.com/_/redis/tags?page=1&name=7) docker image and [DDEV custom compose files](https://ddev.readthedocs.io/en/stable/users/extend/custom-compose-files/)
+It is based on [redis:7.2-alpine](https://hub.docker.com/_/redis/tags?page=1&name=7) docker image and [DDEV custom compose files](https://ddev.readthedocs.io/en/stable/users/extend/custom-compose-files/)
 
-## Comparison to **v6** (`ddev/ddev-redis`)
+## Comparison to **v6** ([`ddev/ddev-redis`](https://github.com/ddev/ddev-redis))
 
-There are a lot of differences between [v6](https://github.com/ddev/ddev-redis) addon and this one
+There are a lot of differences between v6 addon and this one
 
 | Feature           | ddev/ddev-redis  | ddev/ddev-redis-7 |
 | ----------------- | ---------------- | ----------------- |
 | Maximum Memory    | Unlimited        | 512Mb             |
-| Persistence       | No               | **Yes**           |
-| Redis Version     | 6.2.5            | 7.2.1             |
+| Persistence       | Optional         | **Yes**           |
+| Redis Version     | 6.x.y            | 7.2.x             |
 | Image Size        | ~40Mb            | ~11Mb             |
-| Anonymous Volumes | On every restart | **NO**            |
+| Anonymous Volumes | No               | No                |
 | Optimized config  | No               | **Yes**           |
 
 ### Anonymous volumes - Wait, what?
