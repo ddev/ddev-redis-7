@@ -35,9 +35,22 @@ Yes, persistence. This container is configured to persist data on `/data` volume
 
 ## Installation
 
+For DDEV v1.23.5 or above run
+
+```sh
+ddev add-on get ddev/ddev-redis-7
 ```
-$ ddev get ddev/ddev-redis-7
-$ ddev restart
+
+For earlier versions of DDEV run
+
+```sh
+ddev get ddev/ddev-redis-7
+```
+
+Then restart your project
+
+```sh
+ddev restart
 ```
 
 > [!IMPORTANT]  
