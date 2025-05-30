@@ -1,37 +1,19 @@
-<div align="center">
+[![add-on registry](https://img.shields.io/badge/DDEV-Add--on_Registry-blue)](https://addons.ddev.com)
+[![tests](https://github.com/ddev/ddev-redis-7/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/ddev/ddev-redis-7/actions/workflows/tests.yml?query=branch%3Amain)
+[![project is obsolete](https://img.shields.io/badge/maintenance-obsolete-red.svg)](https://github.com/ddev/ddev-redis-7/commits)
+[![release](https://img.shields.io/github/v/release/ddev/ddev-redis-7)](https://github.com/ddev/ddev-redis-7/releases/latest)
 
-# ddev-redis-7 - Redis 7 container for DDEV
+# ddev-redis-7 (obsolete and archived)
 
-[![GitHub release (with filter)](https://img.shields.io/github/v/release/ddev/ddev-redis-7)](https://github.com/ddev/ddev-redis-7/releases)
-[![tests](https://github.com/ddev/ddev-redis-7/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-redis-7/actions/workflows/tests.yml)
-![project is maintained](https://img.shields.io/maintenance/yes/2024.svg)
+This add-on is part of [ddev/ddev-redis](https://github.com/ddev/ddev-redis) since [v2.0.0](https://github.com/ddev/ddev-redis/releases/tag/v2.0.0). See the `README.md` in `ddev/ddev-redis` for optimized configuration and migration instructions.
 
-</div>
+This add-on is archived.
+
+## Overview
 
 This repository provides [Redis 7](https://redis.com) container for [DDEV](https://ddev.readthedocs.io/).
 
 It is based on [redis:7.2-alpine](https://hub.docker.com/_/redis/tags?page=1&name=7) docker image and [DDEV custom compose files](https://ddev.readthedocs.io/en/stable/users/extend/custom-compose-files/)
-
-## Comparison to **v6** ([`ddev/ddev-redis`](https://github.com/ddev/ddev-redis))
-
-There are a lot of differences between v6 addon and this one
-
-| Feature           | ddev/ddev-redis  | ddev/ddev-redis-7 |
-| ----------------- | ---------------- | ----------------- |
-| Maximum Memory    | Unlimited        | 512Mb             |
-| Persistence       | Optional         | **Yes**           |
-| Redis Version     | 6.x.y            | 7.2.x             |
-| Image Size        | ~40Mb            | ~11Mb             |
-| Anonymous Volumes | No               | No                |
-| Optimized config  | No               | **Yes**           |
-
-### Anonymous volumes - Wait, what?
-
-Official redis docker container mounts an anonymous volume on `/data` because... reasons. That volume is recreated on every restart. This one mounts the persistence directory on `/data` and names it according to the project name, and gives it a proper label. This way, each DDEV project has it's own data volume, and data can persist accordingly
-
-### Persistence?
-
-Yes, persistence. This container is configured to persist data on `/data` volume. This means that if you stop the container, and start it again, the data will be there. This is useful for long-term caching of data, and for keeping the cache primed between ddev restarts.
 
 ## Installation
 
